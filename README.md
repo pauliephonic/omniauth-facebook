@@ -1,4 +1,4 @@
-# OmniAuth Facebook &nbsp;[![Build Status](https://secure.travis-ci.org/simi/omniauth-facebook.svg?branch=master)](https://travis-ci.org/simi/omniauth-facebook) [![Gem Version](https://img.shields.io/gem/v/omniauth-facebook.svg)](https://rubygems.org/gems/omniauth-facebook)
+# OmniAuth Facebook fork to allow meta Business Login
 
 📣 **NOTICE** We’re looking for maintainers to help keep this project up-to-date. If you are interested in helping please open an Issue expressing your interest. Thanks! 📣
 
@@ -46,6 +46,8 @@ Option name | Default | Explanation
 `auth_type` | | Optionally specifies the requested authentication features as a comma-separated list, as per https://developers.facebook.com/docs/facebook-login/reauthentication/. Valid values are `https` (checks for the presence of the secure cookie and asks for re-authentication if it is not present), and `reauthenticate` (asks the user to re-authenticate unconditionally). Use 'rerequest' when you want to request premissions. Default is `nil`.
 `secure_image_url` | `true` | Set to `true` to use https for the avatar image url returned in the auth hash. SSL is mandatory as per https://developers.facebook.com/docs/facebook-login/security#surfacearea.
 `callback_url` / `callback_path` | | Specify a custom callback URL used during the server-side flow. Note this must be allowed by your app configuration on Facebook (see 'Valid OAuth redirect URIs' under the 'Advanced' settings section in the configuration for your Facebook app for more details).
+`config_id`  | | Specify the Facebook Login for Business Configuration ID of the permission set and assets configuration set up in the devloper portal. NOTE: only useful if you have set your developer app type as Business to allow managing linked accounts
+
 
 For example, to request `email`, `user_birthday` and `read_stream` permissions and display the authentication page in a popup window:
 
@@ -58,13 +60,13 @@ end
 
 ### API Version
 
-OmniAuth Facebook uses versioned API endpoints by default (current v5.0). You can configure a different version via `client_options` hash passed to `provider`, specifically you should change the version in the `site` and `authorize_url` parameters. For example, to change to v7.0 (assuming that exists):
+OmniAuth Facebook uses versioned API endpoints by default (current v19.0). You can configure a different version via `client_options` hash passed to `provider`, specifically you should change the version in the `site` and `authorize_url` parameters. For example, to change to v20.0 (assuming that exists):
 
 ```ruby
 use OmniAuth::Builder do
   provider :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'],
     client_options: {
-      site: 'https://graph.facebook.com/v7.0',
+      site: 'https://graph.facebook.com/v20.0',
       authorize_url: "https://www.facebook.com/v7.0/dialog/oauth"
     }
 end
@@ -72,7 +74,7 @@ end
 
 ### Per-Request Options
 
-If you want to set the `display` format, `auth_type`, or `scope` on a per-request basis, you can just pass it to the OmniAuth request phase URL, for example: `/auth/facebook?display=popup` or `/auth/facebook?scope=email`.
+If you want to set the `display` format, `auth_type`, or `scope` on a per-request basis, you can just pass it to the OmniAuth request phase URL, for example: `/auth/facebook?display=popup`, `/auth/facebook?scope=emaßil` or `/auth/facebook?config_id=987654321&scope=`.
 
 ## Auth Hash
 
