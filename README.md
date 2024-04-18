@@ -46,7 +46,7 @@ Option name | Default | Explanation
 `auth_type` | | Optionally specifies the requested authentication features as a comma-separated list, as per https://developers.facebook.com/docs/facebook-login/reauthentication/. Valid values are `https` (checks for the presence of the secure cookie and asks for re-authentication if it is not present), and `reauthenticate` (asks the user to re-authenticate unconditionally). Use 'rerequest' when you want to request premissions. Default is `nil`.
 `secure_image_url` | `true` | Set to `true` to use https for the avatar image url returned in the auth hash. SSL is mandatory as per https://developers.facebook.com/docs/facebook-login/security#surfacearea.
 `callback_url` / `callback_path` | | Specify a custom callback URL used during the server-side flow. Note this must be allowed by your app configuration on Facebook (see 'Valid OAuth redirect URIs' under the 'Advanced' settings section in the configuration for your Facebook app for more details).
-`config_id`  | | Specify the Facebook Login for Business Configuration ID of the permission set and assets configuration set up in the devloper portal. NOTE: only useful if you have set your developer app type as Business to allow managing linked accounts
+`config_id`  | | Specify the Facebook Login for Business Configuration ID of the permission set and assets configuration set up in the devrloper portal. NOTE: only useful if you have set your developer app type as Business to allow managing linked accounts
 
 
 For example, to request `email`, `user_birthday` and `read_stream` permissions and display the authentication page in a popup window:
