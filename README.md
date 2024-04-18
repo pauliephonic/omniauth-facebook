@@ -13,7 +13,7 @@ Supports OAuth 2.0 server-side and client-side flows. Read the Facebook docs for
 Add to your `Gemfile`:
 
 ```ruby
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', :git => 'https://github.com/pauliephonic/omniauth-facebook.git'
 ```
 
 Then `bundle install`.
